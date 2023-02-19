@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Immo Pump",
+  "description": "Retrieve info on a for sale apartment or house",
+  "version": "1.1",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    }
+  },
+  "key":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqmcYulzOVR3LXkIrpIY6viX0DEbCr3wYyObUKbA/Ju/VLqF5n4ury+qv9jdhVpOFfsN0bsPnHWZ8KWbuPIkQSe2sHsxby96K1NfCdVSP2fcnjeLyq7FJfhdl6m6ZQmWJhWuj2WG0FVsfDfvWxYRx73b/gTbQMrgziUXSKIQ+j0BMXYq6sSMAv3hZdtIyaDKW1UMwySR4NdLWRvLiw+CVylwC5DNWZA4WRz4MVU1BsT6diqmk/mhEC/ruPUp3wpsdhlwLJVQ9hV6kN8l62/dhf3LMMxq1Bg/kt3k1P/ZlNXOKLuguI07z8JnFluvwpCbC4eMy08vp0mUSEQZlvuDdTQIDAQAB",
+  "oauth2": {
+    "client_id": "1049568011574-befb983pj95ic0vgoggk46q9kborj978.apps.googleusercontent.com",
+    "scopes":["https://www.googleapis.com/auth/spreadsheets", "openid", "email", "profile"]
+  },
+  "permissions": ["activeTab", "scripting", "identity"],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+B",
+        "mac": "Command+B"
+      }
+    }
+  }
+}
