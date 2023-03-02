@@ -26,14 +26,16 @@ chrome.action.onClicked.addListener(async (tab) => {
             const price = document.querySelector("#__next > div > main > div.pages__CWrap-sc-jd4nxp-1.kDiSWL > div > div.pages__CWrapMain-sc-jd4nxp-3.tiDIe > div.EstateResume__EstateResumeContainer-sc-5u2qj9-0.bmnduF > div.Summarystyled__ShowcaseSummaryContainer-sc-1u9xobv-0.kfyHrz > div > div.Summarystyled__Price-sc-1u9xobv-4.fAUZHl > div.Summarystyled__PriceWrapper-sc-1u9xobv-11.fsjhCR > div > span > span").textContent.replace("€","").replace(" ","");
             const neighboorhood = document.querySelector("#__next > div > main > div.pages__CWrap-sc-jd4nxp-1.kDiSWL > div > div.pages__CWrapMain-sc-jd4nxp-3.tiDIe > div:nth-child(2) > p").textContent;
             const surface = document.querySelector("#__next > div > main > div.pages__CWrap-sc-jd4nxp-1.kDiSWL > div > div.pages__CWrapMain-sc-jd4nxp-3.tiDIe > div.EstateResume__EstateResumeContainer-sc-5u2qj9-0.bmnduF > div.Summarystyled__ShowcaseSummaryContainer-sc-1u9xobv-0.kfyHrz > div > div.Summarystyled__TitleWrapper-sc-1u9xobv-2.hFWKOR > div.Summarystyled__TagsWrapper-sc-1u9xobv-13.hRURQu > div:nth-child(2)").textContent.replace(" m²","")
-            const annual_charge = document.querySelector("#__next > div > main > div.pages__CWrap-sc-jd4nxp-1.kDiSWL > div > div.pages__CWrapMain-sc-jd4nxp-3.tiDIe > div.Coownershipstyled__Container-sc-1fk6ihs-0.jJwgiu > div > p").textContent;
+            const annual_charge = !!document.querySelector("#__next > div > main > div.pages__CWrap-sc-jd4nxp-1.kDiSWL > div > div.pages__CWrapMain-sc-jd4nxp-3.tiDIe > div.Coownershipstyled__Container-sc-1fk6ihs-0.jJwgiu > div > p")? document.querySelector("#__next > div > main > div.pages__CWrap-sc-jd4nxp-1.kDiSWL > div > div.pages__CWrapMain-sc-jd4nxp-3.tiDIe > div.Coownershipstyled__Container-sc-1fk6ihs-0.jJwgiu > div > p").textContent: " ";
+            const today = new Date();
             const data={
               values:[[
                 url,
                 price,
                 surface,
                 neighboorhood,
-                annual_charge
+                annual_charge,
+                today.toLocaleDateString()
               ]]
             }
           fetch('https://sheets.googleapis.com/v4/spreadsheets/1B9F54SWBLDZABryZX73lHOuD6vom60oXu4Xb4Q9ATHs/values/RawStudioData:append?valueInputOption=USER_ENTERED', {
@@ -47,10 +49,8 @@ chrome.action.onClicked.addListener(async (tab) => {
               return document.json();
           }).then((document) => {
               console.log("Document Created......", document);
-              docId = document.documentId;
-              console.log(docId);
           }).catch((error) => {
-              console.log("error");
+              console.log(error);
           })
         },
         args: [AUTH_TOKEN, tab.url]
