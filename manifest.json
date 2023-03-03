@@ -26,6 +26,13 @@
         "default": "Ctrl+B",
         "mac": "Command+B"
       }
+    },
+    "location": {
+      "suggested_key": {
+        "default": "Ctrl+M",
+        "mac": "Command+M"
+      },
+      "description":"Get info of a location page"
     }
   }
 }
